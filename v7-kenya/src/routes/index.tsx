@@ -58,7 +58,7 @@ function Home() {
                 key={idx}
                 className={`absolute inset-0 transition-opacity duration-1000 ${idx === i ? "opacity-100" : "opacity-0"}`}
               >
-                <img src={s.img} alt={s.eyebrow} className="absolute inset-0 size-full object-cover scale-105" />
+                <img src={s.img} alt={s.eyebrow} className="absolute inset-0 size-full object-cover" />
                 <div className={`absolute inset-0 bg-gradient-to-br ${s.accent} mix-blend-multiply`} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/40" />
               </div>

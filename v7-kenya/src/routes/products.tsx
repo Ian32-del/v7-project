@@ -7,7 +7,7 @@ import sp4 from "@/assets/sparkling-4.jpg";
 import sp5 from "@/assets/sparkling-5.jpg";
 import sd1 from "@/assets/soda-1.jpg";
 import sd2 from "@/assets/soda-2.jpg";
-import sd3 from "@/assets/soda-3.jpg";
+import sd3 from "@/assets/lemon-mint.jpeg";
 import m1 from "@/assets/malt-1.jpg";
 import m2 from "@/assets/malt-2.jpg";
 import m3 from "@/assets/Pink-Lemonade.jpg";
@@ -33,22 +33,22 @@ export const Route = createFileRoute("/products")({
 });
 
 const sparkling = [
-  { img: m7, name: "Lemon Lime", color: "from-lime-400 to-emerald-500" },
-  { img: m6, name: "Mango Burst", color: "from-amber-400 to-orange-500" },
-  { img: m3, name: "Strawberry", color: "from-rose-400 to-pink-500" },
-  { img: m4, name: "Mixed Berry", color: "from-fuchsia-400 to-purple-500" },
-  { img: m5, name: "Pineapple", color: "from-yellow-300 to-amber-400" },
+  { img: m7, name: "Pomegranate", color: "from-lime-400 to-emerald-500" },
+  { img: m6, name: "Lemon Mint", color: "from-amber-400 to-orange-500" },
+  { img: m3, name: "Pink Lemonade", color: "from-rose-400 to-pink-500" },
+  { img: m4, name: "Blueberry", color: "from-fuchsia-400 to-purple-500" },
+  { img: m5, name: "Pina Colada", color: "from-yellow-300 to-amber-400" },
 ];
 
 const sodas = [
-  { img: m8, name: "Super Cola", tagline: "Original" },
-  { img: sd2, name: "Super Lemon", tagline: "Citrus rush" },
-  { img: sd3, name: "Super Mint", tagline: "Cool & crisp" },
+  { img: m8, name: "Super Soda", tagline: "Original" },
+  { img: sd2, name: "Diet Cola", tagline: "Citrus rush" },
+  { img: sd3, name: "Lemone Lime", tagline: "Cool & crisp" },
 ];
 
 const malts = [
-  { img: m1, name: "V7 Malt Classic", tagline: "Smooth & bold" },
-  { img: m2, name: "V7 Malt Dark", tagline: "Rich variant" },
+  { img: m1, name: "Pineapple Malt", tagline: "Smooth & bold" },
+  { img: m2, name: "Apple Malt", tagline: "Rich variant" },
 ];
 
 function Products() {
