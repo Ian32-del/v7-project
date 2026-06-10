@@ -16,6 +16,7 @@ import m5 from "@/assets/pina-colada.webp";
 import m6 from "@/assets/Lemon-mint.webp";
 import m7 from "@/assets/pomergranate.webp";
 import m8 from "@/assets/super-soda.webp";
+import { Package, Star, ShoppingCart } from "lucide-react";
 
 
 
@@ -92,7 +93,7 @@ function Products() {
                     <img src={p.img} alt={p.name} loading="lazy" className="size-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   <h3 className="mt-4 font-semibold text-lg">{p.name}</h3>
-                  <p className="text-xs text-muted-foreground">Sparkling · 330ml</p>
+                  <p className="text-xs text-muted-foreground">Sparkling · 300ml</p>
                 </div>
               </Reveal>
             ))}
@@ -160,6 +161,50 @@ function Products() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="h-32 lg:h-48" />
+      <section className="relative -mt-10 z-10 mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-gray-50 to-white shadow-xl border border-gray-200 py-20 px-8 lg:px-16">
+          
+          <div className="relative grid md:grid-cols-3 gap-12 text-center">
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                <Package className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="mt-6 text-2xl lg:text-3xl font-black uppercase tracking-tight text-gray-800">
+                24 Cans Per Carton
+              </h3>
+              <p className="mt-3 text-lg text-gray-500 max-w-xs">
+                Perfect for stocking up or sharing with friends.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                <Star className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="mt-6 text-2xl lg:text-3xl font-black uppercase tracking-tight text-gray-800">
+                12 Month Shelf Life
+              </h3>
+              <p className="mt-3 text-lg text-gray-500 max-w-xs">
+                Long-lasting freshness guaranteed.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                <ShoppingCart className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="mt-6 text-2xl lg:text-3xl font-black uppercase tracking-tight text-gray-800">
+                Bulk Ordering
+              </h3>
+              <p className="mt-3 text-lg text-gray-500 max-w-xs">
+                Special rates for distributors and retailers.
+              </p>
+            </div>
           </div>
         </div>
       </section>

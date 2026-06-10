@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Twitter, Mail } from "lucide-react";
+import { Instagram, Music2, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -14,9 +14,19 @@ export function Footer() {
             Premium beverages crafted for modern lifestyles. Refreshment, flavor, and energy — bottled in Kenya.
           </p>
           <div className="flex gap-2 mt-5">
-            {[Instagram, Facebook, Twitter, Mail].map((Icon, i) => (
-              <a key={i} href="#" className="size-10 grid place-items-center rounded-full bg-background border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                <Icon size={16} />
+            {[
+              { Icon: Instagram, url: "https://www.instagram.com/v7kenya?igsh=MTN5OHMycTlxY2JoYg==" },
+              { Icon: Music2, url: "https://www.tiktok.com/@v7.kenya" },
+              { Icon: Mail, url: "mailto:V7beveragesltd@gmail.com" },
+            ].map((item, i) => (
+              <a
+                key={i}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="size-10 grid place-items-center rounded-full bg-background border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+              >
+                <item.Icon size={16} />
               </a>
             ))}
           </div>
@@ -34,8 +44,8 @@ export function Footer() {
           <h4 className="font-display font-semibold mb-3 text-sm">Contact</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>Nairobi, Kenya</li>
-            <li>+254 700 000 000</li>
-            <li>info@v7kenya.com</li>
+            <li>+254 791 302 007</li>
+            <li>V7beveragesltd@gmail.com</li>
           </ul>
         </div>
       </div>

@@ -5,6 +5,7 @@ import heroSparkling from "@/assets/hero-sparkling.jpg";
 import heroSoda from "@/assets/hero-soda.jpg";
 import heroMalt from "@/assets/hero-malt.jpg";
 import { Reveal } from "@/components/site/Reveal";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -20,23 +21,23 @@ const slides = [
   {
     img: heroSparkling,
     eyebrow: "Vitamin Sparkling Drinks",
-    title: "Refreshment packed\nwith flavor & vitamins.",
+    title: "Refreshment packed\nwith flavor.",
     desc: "Fruity sparkling energy with essential vitamins for your everyday glow.",
-    accent: "from-primary/70 to-emerald-600/40",
+    accent: "from-pink-500/40 to-purple-700/40",
   },
   {
     img: heroSoda,
     eyebrow: "Super Soda",
     title: "Bold taste.\nClean refreshment.",
     desc: "A modern soda crafted for cool moments and bigger flavor.",
-    accent: "from-soda/70 to-blue-700/40",
+    accent: "from-amber-900/60 to-blue-900/30",
   },
   {
     img: heroMalt,
     eyebrow: "V7 Malt",
     title: "A rich, smooth\nmalt experience.",
     desc: "Premium malt for those who appreciate depth, character, and craft.",
-    accent: "from-malt/80 to-amber-700/40",
+    accent: "from-amber-700/50 to-yellow-800/30",
   },
 ];
 
@@ -50,7 +51,7 @@ function Home() {
   return (
     <>
       {/* HERO CAROUSEL */}
-      <div className="pt-6 px-6 lg:px-10">
+      <div className="pt-0 px-6 lg:px-10">
         <div className="max-w-7xl mx-auto border border-gray-300 rounded-3xl overflow-hidden shadow-lg">
           <section className="relative h-[85vh] min-h-[500px] w-full overflow-hidden">
             {slides.map((s, idx) => (
@@ -80,12 +81,15 @@ function Home() {
                   >
                     View Products <ArrowRight size={18} />
                   </Link>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 backdrop-blur-md text-white px-7 py-3.5 font-semibold hover:bg-white/15 transition-colors"
+                  <a
+                    href="https://wa.me/254791302007"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 backdrop-blur-md text-white px-7 py-3.5 font-semibold hover:bg-white/15 hover:scale-105 transition-all"
                   >
-                    Contact Us 
-                  </Link>
+                     <FaWhatsapp className="h-5 w-5" />
+                    Chat on WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
@@ -147,6 +151,33 @@ function Home() {
             </div>
             <Link to="/products" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-7 py-3.5 font-semibold hover:scale-105 transition-transform">
               Browse Products <ArrowRight size={18} />
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="py-12 px-6">
+        <Reveal>
+          <div className="max-w-7xl mx-auto rounded-3xl bg-gradient-to-r from-emerald-700 to-teal-700 p-10 md:p-14 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 text-white">
+            <div className="flex-1">
+              <div className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-sm font-semibold mb-4">
+                🤝 Partner With Us
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold">Become a Distributor</h3>
+              <p className="mt-3 text-white/90 text-lg max-w-xl">
+                Join Kenya's fastest-growing beverage network. Exclusive territories available.
+              </p>
+              <div className="flex flex-wrap gap-4 mt-5 text-sm text-white/80">
+                <span className="flex items-center gap-1">✓ Low minimum order</span>
+                <span className="flex items-center gap-1">✓ Marketing support</span>
+                <span className="flex items-center gap-1">✓ Training included</span>
+              </div>
+            </div>
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center gap-2 rounded-full bg-white text-emerald-700 px-8 py-4 font-bold hover:scale-105 transition-all shadow-md whitespace-nowrap"
+            >
+              Apply Now <ArrowRight size={18} />
             </Link>
           </div>
         </Reveal>

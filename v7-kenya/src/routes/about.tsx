@@ -36,7 +36,7 @@ function About() {
           {[
             { icon: Users, title: "Who We Are", text: "A Kenyan beverage brand crafting world-class drinks with local heart." },
             { icon: Target, title: "Our Mission", text: "Deliver premium refreshment that fuels modern lifestyles every single day." },
-            { icon: Eye, title: "Our Vision", text: "To become Africa's most loved next-generation beverage company." },
+            { icon: Eye, title: "Our Vision", text: "To become V7 Kenya's most loved next-generation beverage company." },
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 100}>
               <div className="h-full rounded-3xl bg-card border border-border p-8 shadow-soft hover:shadow-glow hover:-translate-y-1 transition-all">

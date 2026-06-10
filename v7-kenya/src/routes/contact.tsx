@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
-import { Phone, Mail, MapPin, Send, Instagram, Facebook, Twitter } from "lucide-react";
-import { useState } from "react";
+import { Phone, Mail, MapPin, Send, Instagram, Music2 } from "lucide-react";
+import { useRef, useState } from "react";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -15,6 +15,37 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+const [loading, setLoading] = useState(false);
+
+const formRef = useRef<HTMLFormElement>(null);
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  setLoading(true);
+
+  try {
+    const formData = new FormData(formRef.current!);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      setSent(true);
+      formRef.current?.reset();
+    } else {
+      alert("Something went wrong.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+
+  setLoading(false);
+};
   return (
     <>
       <section className="py-20 px-6 lg:px-10 max-w-7xl mx-auto text-center">
@@ -36,17 +67,44 @@ function Contact() {
             <p className="mt-2 opacity-90 text-sm">Our team is available Mon — Fri, 9am to 6pm EAT.</p>
             <div className="mt-8 space-y-5 flex-1">
               {[
-                { icon: Phone, label: "Phone", value: "+254 700 000 000" },
-                { icon: Mail, label: "Email", value: "info@v7kenya.com" },
-                { icon: MapPin, label: "Office", value: "Nairobi, Kenya" },
+                {
+                  icon: Phone,
+                  label: "Phone",
+                  value: "+254 791 302 007",
+                  href: "tel:+254791302007",
+                },
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "V7beveragesltd@gmail.com",
+                  href: "mailto:V7beveragesltd@gmail.com",
+                },
+                {
+                  icon: MapPin,
+                  label: "Office",
+                  value: "Nairobi, Kenya",
+                },
               ].map((c) => (
                 <div key={c.label} className="flex items-start gap-4">
                   <div className="size-11 grid place-items-center rounded-xl bg-white/15 backdrop-blur">
                     <c.icon size={18} />
                   </div>
+
                   <div>
-                    <div className="text-xs uppercase tracking-wider opacity-70">{c.label}</div>
-                    <div className="font-semibold">{c.value}</div>
+                    <div className="text-xs uppercase tracking-wider opacity-70">
+                      {c.label}
+                    </div>
+
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        className="font-semibold hover:underline transition-all"
+                      >
+                        {c.value}
+                      </a>
+                    ) : (
+                      <div className="font-semibold">{c.value}</div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -54,9 +112,24 @@ function Contact() {
             <div className="mt-8 pt-6 border-t border-white/20">
               <div className="text-xs uppercase tracking-wider opacity-70 mb-3">Follow us</div>
               <div className="flex gap-2">
-                {[Instagram, Facebook, Twitter].map((Icon, i) => (
-                  <a key={i} href="#" className="size-10 grid place-items-center rounded-full bg-white/15 hover:bg-white/25 transition-colors">
-                    <Icon size={16} />
+                {[
+                  {
+                    icon: Instagram,
+                    href: "https://www.instagram.com/v7kenya?igsh=MTN5OHMycTlxY2JoYg==",
+                  },
+                  {
+                    icon: Music2,
+                    href: "https://www.tiktok.com/@v7.kenya",
+                  },
+                ].map((social, i) => (
+                  <a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="size-10 grid place-items-center rounded-full bg-white/15 hover:bg-white/25 transition-colors"
+                  >
+                    <social.icon size={16} />
                   </a>
                 ))}
               </div>
@@ -66,9 +139,28 @@ function Contact() {
 
         <Reveal className="lg:col-span-3" delay={100}>
           <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            ref={formRef}
+            onSubmit={handleSubmit}
             className="rounded-3xl bg-card border border-border p-8 shadow-soft h-full"
           >
+          <input
+            type="hidden"
+            name="access_key"
+            value="4f484a1e-90e4-472e-9976-a2026359d1dd"
+          />
+
+          <input
+            type="hidden"
+            name="subject"
+            value="New Contact Message from V7 Kenya"
+          />
+
+          <input
+            type="checkbox"
+            name="botcheck"
+            className="hidden"
+            style={{ display: "none" }}
+          />
             <h2 className="text-2xl font-bold">Send us a message</h2>
             <p className="text-sm text-muted-foreground mt-1">We typically respond within 24 hours.</p>
 
@@ -78,17 +170,28 @@ function Contact() {
             </div>
             <div className="mt-4">
               <label className="block text-sm font-medium mb-2">Message</label>
-              <textarea required rows={5} placeholder="Tell us what's on your mind..." className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all resize-none" />
+              <textarea name="message" required rows={5} placeholder="Tell us what's on your mind..." className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all resize-none" />
             </div>
 
-            <button type="submit" className="mt-6 inline-flex items-center gap-2 rounded-full gradient-primary text-primary-foreground px-7 py-3.5 font-semibold shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition-all">
-              {sent ? "Message sent ✓" : (<>Send Message <Send size={16} /></>)}
+            <button type="submit"
+                disabled={loading}
+                className="mt-6 inline-flex items-center gap-2 rounded-full gradient-primary text-primary-foreground px-7 py-3.5 font-semibold shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition-all disabled:opacity-50"
+              >
+                {loading
+                  ? "Sending..."
+                  : sent
+                  ? "Message sent ✓"
+                  : (
+                    <>
+                      Send Message <Send size={16} />
+                    </>
+                  )}
             </button>
           </form>
         </Reveal>
       </section>
 
-      <section className="pb-24 max-w-7xl mx-auto px-6 lg:px-10">
+      {/* <section className="pb-24 max-w-7xl mx-auto px-6 lg:px-10">
         <Reveal>
           <div className="rounded-3xl overflow-hidden border border-border shadow-soft aspect-[16/7] bg-secondary">
             <iframe
@@ -99,7 +202,7 @@ function Contact() {
             />
           </div>
         </Reveal>
-      </section>
+      </section> */}
     </>
   );
 }

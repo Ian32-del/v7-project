@@ -2,12 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
+import logo2 from "@/assets/logo2.png";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/products", label: "Products" },
-  { to: "/about", label: "About Us" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "HOME" },
+  { to: "/products", label: "PRODUCTS" },
+  { to: "/about", label: "ABOUT US" },
+  { to: "/contact", label: "CONTACT" },
 ] as const;
 
 export function Navbar() {
@@ -31,9 +32,9 @@ export function Navbar() {
         <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src={logo}
+              src={logo2}
               alt="V7 Kenya Logo"
-              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
 
             <span className="font-display font-bold text-lg">
